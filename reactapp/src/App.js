@@ -73,7 +73,7 @@ function App() {
    const response =  await fetch(`/wishlist-movies/${b}`, {
       method: 'DELETE'
      });
-    } 
+  } 
 
 
   var movieList = movieData.map(function(movie, i){
