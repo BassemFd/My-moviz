@@ -29,12 +29,15 @@ export default {
     });
     upstream.searchParams.set("api_key", env.TMDB_API_KEY);
 
-    const res = await fetch(upstream, { cf: { cacheTtl: 3600, cacheEverything: true } });
+    // Only successes are cached — a cached 401/5xx would be served to everyone for an hour.
+    const res = await fetch(upstream, {
+      cf: { cacheEverything: true, cacheTtlByStatus: { "200-299": 3600, "400-599": 0 } },
+    });
     return new Response(res.body, {
       status: res.status,
       headers: {
         "content-type": "application/json",
-        "cache-control": "public, max-age=300",
+        "cache-control": res.ok ? "public, max-age=300" : "no-store",
       },
     });
   },

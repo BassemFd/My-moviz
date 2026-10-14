@@ -1,19 +1,26 @@
-import MovieCard from "../components/MovieCard";
+import Hero from "../components/Hero";
+import MovieRow from "../components/MovieRow";
 import { useTmdb, type Movie, type Page } from "../lib/tmdb";
 
+const ROWS = [
+  { title: "Trending this week", path: "trending/movie/week" },
+  { title: "Popular", path: "movie/popular" },
+  { title: "Top rated", path: "movie/top_rated" },
+  { title: "Now playing", path: "movie/now_playing" },
+  { title: "Coming soon", path: "movie/upcoming" },
+];
+
 export default function Home() {
-  const { data, error, loading } = useTmdb<Page<Movie>>("movie/popular");
-  if (error) return <p className="text-muted">Couldn't load movies. {error.message}</p>;
+  // Same request as the first row — the Worker's edge cache serves it twice for free.
+  const trending = useTmdb<Page<Movie>>("trending/movie/week");
+  const hero = trending.data?.results.find((m) => m.backdrop_path) ?? null;
+
   return (
-    <section>
-      <h1 className="mb-4 text-2xl font-bold">Popular</h1>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
-        {loading && !data
-          ? Array.from({ length: 12 }, (_, i) => (
-              <div key={i} className="aspect-[2/3] animate-pulse rounded-lg bg-surface" />
-            ))
-          : data?.results.map((m) => <MovieCard key={m.id} movie={m} />)}
-      </div>
-    </section>
+    <div className="flex flex-col gap-10">
+      <Hero movie={hero} />
+      {ROWS.map((r) => (
+        <MovieRow key={r.path} {...r} />
+      ))}
+    </div>
   );
 }
