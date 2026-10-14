@@ -5,7 +5,7 @@ var options = {
     useNewUrlParser: true,
     useUnifiedTopology : true
     }
-    mongoose.connect('mongodb+srv://admin:<insertPass>@cluster0.8wqyi.mongodb.net/mymovizdb?retryWrites=true&w=majority',
+    mongoose.connect(process.env.MONGODB_URI,
     options,
     function(err) {
     console.log(err);

@@ -7,7 +7,7 @@ var request = require('sync-request');
 var movieModel = require('../models/movie');
 
 
-var result = request("GET", "https://api.themoviedb.org/3/movie/popular?api_key=a08b1658f571630825cad232d5f9229d&language=en-US&page=1");
+var result = request("GET", `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`);
 var content = JSON.parse(result.body);
 
 
