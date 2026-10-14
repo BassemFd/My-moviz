@@ -7,7 +7,7 @@ const NAV = [
 ];
 
 const LINKS = [
-  { label: "Portfolio", href: "https://career-log.bassem-fayed.workers.dev" },
+  { label: "Portfolio", href: "https://bassemfayed.com" },
   { label: "GitHub", href: "https://github.com/BassemFd" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/bassem-fd" },
   { label: "Source", href: "https://github.com/BassemFd/My-moviz" },
