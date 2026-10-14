@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet, ScrollRestoration } from "react-router";
+import { TMDB_LOGO_SHORT, TMDB_NOTICE } from "../lib/tmdbLogo";
 
 const NAV = [
   { to: "/", label: "Movies" },
@@ -74,13 +75,15 @@ export default function Layout() {
             ))}
           </nav>
         </div>
-        <p className="mx-auto max-w-7xl px-4 pb-8 text-xs text-muted sm:px-6">
-          Movie data and images from{" "}
-          <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="underline hover:text-ink">
-            TMDB
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-3 gap-y-2 px-4 pb-8 text-xs text-muted sm:px-6">
+          <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" aria-label="The Movie Database (TMDB)">
+            <img src={TMDB_LOGO_SHORT} alt="TMDB" className="h-3 w-auto" />
           </a>
-          . This product uses the TMDB API but is not endorsed or certified by TMDB.
-        </p>
+          <span>{TMDB_NOTICE}</span>
+          <Link to="/about" className="underline hover:text-ink">
+            About &amp; credits
+          </Link>
+        </div>
       </footer>
       <ScrollRestoration />
     </div>

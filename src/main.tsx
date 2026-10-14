@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Search from "./pages/Search";
 import Genre from "./pages/Genre";
+import About from "./pages/About";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "series", element: <Home type="tv" /> },
       { path: "search", element: <Search /> },
       { path: "genre/:type/:id", element: <Genre /> },
+      { path: "about", element: <About /> },
       { path: "*", element: <NotFound /> },
     ],
   },
