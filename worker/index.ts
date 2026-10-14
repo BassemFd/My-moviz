@@ -8,7 +8,7 @@ interface Env {
 
 // Only the read endpoints the app uses — anything else would turn this into an
 // open proxy spending our key.
-const ALLOWED = /^(movie|trending|genre|search|discover)\/[\w/-]+$/;
+const ALLOWED = /^(movie|tv|trending|genre|search|discover)\/[\w/-]+$/;
 
 export function tmdbPath(pathname: string): string | null {
   const path = pathname.replace(/^\/api\/tmdb\//, "");

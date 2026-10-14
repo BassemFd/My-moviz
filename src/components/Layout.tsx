@@ -1,4 +1,9 @@
-import { Link, Outlet, ScrollRestoration } from "react-router";
+import { Link, NavLink, Outlet, ScrollRestoration } from "react-router";
+
+const NAV = [
+  { to: "/", label: "Movies" },
+  { to: "/series", label: "Series" },
+];
 
 const LINKS = [
   { label: "Portfolio", href: "https://career-log.bassem-fayed.workers.dev" },
@@ -16,6 +21,33 @@ export default function Layout() {
           <Link to="/" className="text-xl font-black tracking-tight">
             my<span className="text-accent">moviz</span>
           </Link>
+          <nav aria-label="Main" className="flex flex-1 items-center gap-1 text-sm font-semibold sm:gap-2">
+            {NAV.map((n) => (
+              <NavLink
+                key={n.to}
+                to={n.to}
+                end
+                className={({ isActive }) =>
+                  `rounded-full px-3 py-1.5 transition ${isActive ? "bg-surface text-ink" : "text-muted hover:text-ink"}`
+                }
+              >
+                {n.label}
+              </NavLink>
+            ))}
+            <NavLink
+              to="/search"
+              aria-label="Search"
+              className={({ isActive }) =>
+                `ml-auto flex items-center gap-2 rounded-full border px-3 py-1.5 transition ${isActive ? "border-accent text-ink" : "border-line text-muted hover:text-ink"}`
+              }
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+              <span className="hidden sm:inline">Search</span>
+            </NavLink>
+          </nav>
         </div>
       </header>
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">

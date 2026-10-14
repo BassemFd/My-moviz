@@ -6,6 +6,8 @@ describe("tmdbPath", () => {
     expect(tmdbPath("/api/tmdb/movie/popular")).toBe("movie/popular");
     expect(tmdbPath("/api/tmdb/trending/movie/week")).toBe("trending/movie/week");
     expect(tmdbPath("/api/tmdb/search/movie")).toBe("search/movie");
+    expect(tmdbPath("/api/tmdb/tv/1399/season/1")).toBe("tv/1399/season/1");
+    expect(tmdbPath("/api/tmdb/search/multi")).toBe("search/multi");
   });
 
   it("rejects anything that would make it an open proxy", () => {
