@@ -3,6 +3,9 @@
   "name": "my-moviz",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
+  // moviz.bassemfayed.com; workers_dev keeps my-moviz.*.workers.dev working for old links.
+  "routes": [{ "pattern": "moviz.bassemfayed.com", "custom_domain": true }],
+  "workers_dev": true,
   "assets": {
     // SPA: unknown paths fall back to index.html; /api/* reaches the Worker.
     "not_found_handling": "single-page-application",
