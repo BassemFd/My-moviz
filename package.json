@@ -1,19 +1,30 @@
 {
-  "name": "mymovizbackend",
-  "version": "0.0.0",
+  "name": "my-moviz",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node ./bin/www",
-    "heroku-postbuild": "cd reactapp && npm install && npm run build"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "mongoose": "^5.11.15",
-    "morgan": "~1.9.1",
-    "sync-request": "^6.1.0"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router": "^8.4.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.64.0",
+    "@cloudflare/workers-types": "^5.20261014.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "5.9",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4",
+    "wrangler": "^4.151.0"
   }
 }
